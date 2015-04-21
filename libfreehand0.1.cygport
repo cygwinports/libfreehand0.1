@@ -1,0 +1,26 @@
+NAME="libfreehand0.1"
+VERSION=0.1.0
+RELEASE=1
+CATEGORY="Libs"
+SUMMARY="Adobe FreeHand format import library"
+DESCRIPTION="Libfreehand is library providing ability to interpret and import
+Adobe FreeHand documents into various applications."
+HOMEPAGE="http://www.freedesktop.org/wiki/Software/libfreehand/"
+SRC_URI="http://dev-www.libreoffice.org/src/libfreehand/libfreehand-${VERSION}.tar.xz"
+SRC_DIR="libfreehand-${VERSION}"
+PATCH_URI="
+	0.0.0-cygwin-ldflags.patch
+	0.0.0-vpath.patch
+"
+
+PKG_NAMES="libfreehand-tools ${NAME}_1 ${NAME}-devel ${NAME}-doc"
+libfreehand_tools_CATEGORY="Graphics"
+libfreehand_tools_OBSOLETES="libfreehand-bin"
+libfreehand_tools_SUMMARY=${SUMMARY/library/utilities}
+libfreehand_tools_CONTENTS="usr/bin/*.exe"
+libfreehand0_1_1_CONTENTS="--exclude=html usr/bin/*-0.1-1.dll usr/share/doc/"
+libfreehand0_1_devel_CONTENTS="usr/include/ usr/lib/"
+libfreehand0_1_doc_CATEGORY="Doc"
+libfreehand0_1_doc_CONTENTS="usr/share/doc/${NAME}/html/"
+
+KEEP_LA_FILES="none"
